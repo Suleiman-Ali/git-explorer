@@ -21,7 +21,7 @@ export default function Select({ name, options }: SelectPropTypes) {
           key={option}
           value={isString(option) ? option.toLowerCase() : ''}
         >
-          {option}
+          {isString(option) ? option : name === 'sort' ? 'Sort By' : 'Order By'}
         </option>
       ))}
     </select>

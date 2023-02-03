@@ -6,5 +6,5 @@ export const DEFAULT_PARAMS: SearchParamTypes = {
   order: '',
   page: '1',
 };
-export const SORT_OPTIONS = ['Sort By', 'Followers', 'Repositories', 'Joined'];
-export const ORDER_OPTIONS = ['Order By', 'Asc', 'Desc'];
+export const SORT_OPTIONS = ['', 'Followers', 'Repositories', 'Joined'];
+export const ORDER_OPTIONS = ['', 'Asc', 'Desc'];

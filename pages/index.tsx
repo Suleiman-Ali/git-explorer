@@ -11,14 +11,14 @@ import { SearchParamTypes, UserSearchType } from '../lib/types';
 import { useRouter } from 'next/router';
 import { DEFAULT_PARAMS } from '../lib/constants';
 
-interface getServerSidePropsTypes {
+interface GetServerSidePropsTypes {
   query: SearchParamTypes;
 }
 
 // prettier-ignore
-export async function getServerSideProps(context: getServerSidePropsTypes) {
+export async function getServerSideProps(context: GetServerSidePropsTypes) {
   const isSearch = !isEmpty(context.query);
-  const params = isSearch ? context.query : DEFAULT_PARAMS;
+  const params = isSearch ? {...DEFAULT_PARAMS, ...context.query} : DEFAULT_PARAMS;
   const props = { params, users: [], count: 0, isSearch, isResult: false, isError: false };
   try {
     if (params.page > 10 || params.page < 1) throw new Error();
@@ -87,7 +87,7 @@ export default function Home({
         params,
       }}
     >
-      <div className="flex flex-col gap-10 items-center justify-center py-24 px-2 ">
+      <div className="flex flex-col gap-10 items-center justify-center py-24 px-2">
         <Title />
         <Form />
         <Pages />

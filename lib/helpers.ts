@@ -27,3 +27,10 @@ export function paginate(count: number) {
   for (let i = 0; i < display_n_pages; i++) pages.push(i + 1);
   return pages;
 }
+
+export function getCount(n: number) {
+  let num = Math.round(n);
+  if (num > 999999) return `${(num / 1000000).toString().split('.')[0]}M`;
+  if (num > 999) return `${(num / 1000).toString().split('.')[0]}K`;
+  return `${num}`;
+}
